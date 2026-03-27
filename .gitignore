@@ -20,3 +20,5 @@ Thumbs.db
 *.pkl
 *.joblib
 *.onnx
+
+.hello.txt
