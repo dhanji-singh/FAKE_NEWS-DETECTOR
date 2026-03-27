@@ -1,19 +1,73 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background: #f4f4f4;
-}
-textarea {
-    width: 400px;
-    height: 100px;
-    max-width: 90vw;
-}
-button {
-    padding: 10px 20px;
-    margin-top: 10px;
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  background-color: #0d0d0d;
+  color: #e0e0e0;
+  text-align: center;
 }
 
-.error {
-    color: #b00020;
-    font-weight: 600;
+.app-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header {
+  padding: 20px;
+  background: linear-gradient(90deg, #111, #222);
+  border-bottom: 2px solid #00ff99;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #00ff99;
+  margin: 0;
+}
+
+.tagline {
+  font-size: 1rem;
+  color: #999;
+  margin-top: 5px;
+}
+
+textarea {
+  width: 60%;
+  height: 120px;
+  margin: 20px auto;
+  padding: 15px;
+  background: #1a1a1a;
+  color: #00ff99;
+  border: 1px solid #00ff99;
+  border-radius: 5px;
+  resize: none;
+}
+
+button {
+  padding: 12px 25px;
+  background: #00ff99;
+  color: #0d0d0d;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #00cc77;
+}
+
+.result {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  color: #ff0066;
+}
+
+footer {
+  padding: 10px;
+  font-size: 0.9rem;
+  background: #111;
+  border-top: 1px solid #00ff99;
 }
