@@ -15,13 +15,24 @@
 
     <main>
       <form method="POST" action="/predict">
-        <textarea name="news" placeholder="Enter news headline here..."></textarea>
+        <textarea id="newsInput" name="news" maxlength="5000"
+                  placeholder="Enter news headline or article text here...">{{ text }}</textarea>
+        <p class="char-counter"><span id="charCount">{{ text | length }}</span> / 5,000</p>
         <button type="submit">Analyze</button>
       </form>
 
+      {% if error %}
+        <div class="error-box" role="alert">
+          <p>⚠️ {{ error }}</p>
+        </div>
+      {% endif %}
+
       {% if prediction %}
-        <div class="result">
+        <div class="result {% if prediction == 'Fake News' %}fake{% else %}real{% endif %}">
           <h2>Result: {{ prediction }}</h2>
+          {% if confidence is not none %}
+            <p class="confidence">Confidence: {{ confidence }}%</p>
+          {% endif %}
         </div>
       {% endif %}
     </main>
@@ -30,5 +41,13 @@
       <p>GuardianX v2 | DarkVibe Coders</p>
     </footer>
   </div>
+
+  <script>
+    const input = document.getElementById('newsInput');
+    const counter = document.getElementById('charCount');
+    input.addEventListener('input', () => {
+      counter.textContent = input.value.length;
+    });
+  </script>
 </body>
 </html>
