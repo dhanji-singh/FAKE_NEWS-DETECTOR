@@ -1,0 +1,33 @@
+# Git-ignored files that don't belong in the Docker image
+.git/
+.gitignore
+.env
+.env.example
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Test & coverage artefacts
+tests/
+.pytest_cache/
+.coverage
+
+# CI config
+.github/
+
+# Docs
+README.md
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+
+# Model artefacts (mounted at runtime via docker-compose volume)
+model/*.pkl
+model/*.joblib
+model/*.onnx
+model/*.csv

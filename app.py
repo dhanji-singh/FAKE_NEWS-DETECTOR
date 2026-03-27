@@ -2,6 +2,7 @@ import logging
 import os
 import pickle
 from pathlib import Path
+from typing import Any, Optional, Tuple
 
 from flask import Flask, render_template, request
 
@@ -20,7 +21,7 @@ VECTORIZER_PATH = BASE_DIR / "model" / "vectorizer.pkl"
 MAX_INPUT_LENGTH = 5_000  # characters
 
 
-def load_artifacts():
+def load_artifacts() -> Tuple[Any, Any, Optional[str]]:
     """Load the trained model and vectorizer from disk.
 
     Returns a tuple of (model, vectorizer, error_message).  If loading
@@ -50,13 +51,13 @@ model, vectorizer, load_error = load_artifacts()
 
 
 @app.route("/")
-def home():
+def home() -> str:
     return render_template("index.html", prediction=None, confidence=None,
                            error=load_error, text="")
 
 
 @app.route("/predict", methods=["POST"])
-def predict():
+def predict() -> str:
     text = request.form.get("news", "").strip()
 
     if not text:

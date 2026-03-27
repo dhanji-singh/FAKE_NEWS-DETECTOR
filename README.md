@@ -11,6 +11,7 @@ Built with Flask, scikit-learn TF-IDF + Logistic Regression, and a dark-themed U
 - [Features](#features)
 - [Architecture](#architecture)
 - [Quick Start](#quick-start)
+- [Running with Docker](#running-with-docker)
 - [Training the Model](#training-the-model)
 - [Running Tests](#running-tests)
 - [Project Structure](#project-structure)
@@ -101,6 +102,36 @@ Open <http://localhost:5000> in your browser.
 
 ---
 
+## Running with Docker
+
+Make sure you have already trained the model (see [Training the Model](#training-the-model)) so that `model/fake_model.pkl` and `model/vectorizer.pkl` exist locally.
+
+### 1 – Create your `.env` file
+
+```bash
+cp .env.example .env
+# Edit .env if you want to change PORT or enable debug mode
+```
+
+### 2 – Build and start
+
+```bash
+docker compose up --build
+```
+
+Open <http://localhost:5000> in your browser.
+
+The `model/` directory is mounted read-only into the container, so you can retrain locally and restart the container without rebuilding the image.
+
+### Build the image manually (optional)
+
+```bash
+docker build -t cyber-kavach .
+docker run -p 5000:5000 -v "$(pwd)/model:/app/model:ro" cyber-kavach
+```
+
+---
+
 ## Training the Model
 
 | File | Expected columns |
@@ -128,6 +159,10 @@ FAKE_NEWS-DETECTOR/
 ├── app.py                  # Flask web application
 ├── requirements.txt        # Runtime dependencies
 ├── pyproject.toml          # Tool configuration (pytest, flake8)
+├── Dockerfile              # Container image definition
+├── docker-compose.yml      # Local dev / deployment orchestration
+├── .env.example            # Template for environment variables
+├── .dockerignore           # Files excluded from the Docker build context
 ├── model/
 │   ├── train_model.py      # Training script
 │   ├── fake_news.csv       # (local only – not committed)
@@ -151,10 +186,10 @@ FAKE_NEWS-DETECTOR/
 | `FLASK_DEBUG` | `0` | Set to `1` to enable Flask debug/reloader |
 | `PORT` | `5000` | Port the server listens on |
 
-Example `.env` (never commit this file):
+Example – copy `.env.example` to `.env` (never commit your `.env`):
 
 ```
-FLASK_DEBUG=1
+FLASK_DEBUG=0
 PORT=5000
 ```
 
