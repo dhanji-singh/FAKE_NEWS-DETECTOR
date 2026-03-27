@@ -15,3 +15,8 @@ Thumbs.db
 
 # Project datasets (keep local, don't push)
 *.csv
+
+# Local model artifacts (regenerated via training script)
+*.pkl
+*.joblib
+*.onnx
