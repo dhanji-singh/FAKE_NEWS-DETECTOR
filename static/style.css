@@ -59,10 +59,40 @@ button:hover {
   background: #00cc77;
 }
 
+.char-counter {
+  font-size: 0.8rem;
+  color: #666;
+  margin: -10px 0 10px;
+}
+
+.error-box {
+  margin: 15px auto;
+  width: 60%;
+  padding: 12px 16px;
+  background: #2a0a0a;
+  border: 1px solid #ff3333;
+  border-radius: 5px;
+  color: #ff6666;
+  font-size: 1rem;
+}
+
 .result {
   margin-top: 20px;
   font-size: 1.5rem;
+}
+
+.result.fake {
   color: #ff0066;
+}
+
+.result.real {
+  color: #00ff99;
+}
+
+.confidence {
+  font-size: 1rem;
+  color: #aaa;
+  margin-top: 5px;
 }
 
 footer {
