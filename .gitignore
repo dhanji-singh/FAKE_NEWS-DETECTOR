@@ -1,0 +1,17 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# Local environment files
+.env
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+
+# Project datasets (keep local, don't push)
+*.csv

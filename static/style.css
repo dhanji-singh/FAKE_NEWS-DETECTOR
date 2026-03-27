@@ -1,0 +1,19 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #f4f4f4;
+}
+textarea {
+    width: 400px;
+    height: 100px;
+    max-width: 90vw;
+}
+button {
+    padding: 10px 20px;
+    margin-top: 10px;
+}
+
+.error {
+    color: #b00020;
+    font-weight: 600;
+}

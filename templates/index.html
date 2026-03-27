@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cyber Kavach - Fake News Detector</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Cyber Kavach 🛡️</h1>
+    <form method="POST" action="/predict">
+        <textarea name="news" placeholder="Enter news headline here...">{{ text or '' }}</textarea>
+        <button type="submit">Check</button>
+    </form>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if prediction is not none %}
+        <h2>Result: {{ prediction }}</h2>
+    {% endif %}
+</body>
+</html>
